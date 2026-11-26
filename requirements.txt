@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+# Dependencies for the reporting-boundary reproduction.
+# Versions match the environment reported in the manuscript
+# (single RTX 4070 Super, CUDA 12.1, PyTorch 2.1, diffusers 0.25).
+
+# ---- core analysis (needed by selftest.py) ----
+numpy==1.24.4
+scipy==1.11.4
+pandas==2.1.4
+matplotlib==3.8.2
+
+# ---- deep learning (generation + classifier stages) ----
+torch==2.1.0
+torchvision==0.16.0
+diffusers==0.25.0
+transformers==4.36.2
+accelerate==0.25.0
+peft==0.7.1
+safetensors==0.4.1
+
+# ---- image / metrics ----
+Pillow==10.1.0
+scikit-image==0.22.0
+
+# ---- CLIP: masked style purity and CMMD (Section 3.6.4) ----
+# Optional: metrics/mask_defined.py raises a clear error when it is absent.
+clip @ git+https://github.com/openai/CLIP.git
+
+# ---- progress ----
+tqdm==4.66.1
+
+# ---- external (not pip-installable) ----
+# LoRA training uses kohya-ss / sd-scripts:
+#   git clone https://github.com/kohya-ss/sd-scripts
+# See lora_train.py (KOHYA_TRAIN) and docs/WORKFLOW.md.
